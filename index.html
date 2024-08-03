@@ -4,37 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forms</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .form-select {
-            background-color: #f8f9fa; /* Light background color */
-            border: 1px solid #ced4da; /* Light border */
-            border-radius: 0.375rem; /* Rounded corners */
-            padding: 0.5rem; /* Padding inside the select */
-        }
-
-        .form-select:focus {
-            border-color: #0d6efd; /* Change border color on focus */
-            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Shadow effect */
-        }
-
-        .form-select option {
-            padding: 0.5rem; /* Padding inside options */
-        }
-
-        .dropdown-help {
-            font-size: 0.875rem; /* Smaller font size */
-            color: #6c757d; /* Subtle text color */
-        }
-    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+    <script src="script.js"></script>
 </head>
 <body class="bg-light">
     <div class="container mt-4 bg-light-subtle">
-        <h1 class="text-center mb-5">Re-Evaluation</h1>
+        <h1 class="text-center mb-5">Information</h1>
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
-                <form action="/submit-form" method="post">
+                <form action="#" method="post" id="myform">
                     <div class="mb-3">
                         <label for="exampleInputName" class="form-label">Name</label>
                         <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" required>
@@ -42,48 +22,44 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleInputPRN" class="form-label">PRN Number</label>
-                        <input type="text" class="form-control" id="exampleInputPRN" aria-describedby="prnHelp" required>
-                        <div id="prnHelp" class="form-text">Enter your PRN number.</div>
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp3" required>
+                        <div id="emailHelp3" class="form-text">Enter your email</div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleInputEmail3" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp3" required>
-                        <div id="emailHelp3" class="form-text">Enter you official email</div>
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" aria-describedby="phone" required>
+                        <div id="phones" class="form-text">Enter number.</div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleInputDropdown5" class="form-label">Branch</label>
-                        <select class="form-select" id="exampleInputDropdown5" aria-describedby="dropdownHelp5" required>
-                            <option value="" disabled selected>Branch</option>
-                            <option value="core">CSE Core</option>
-                            <option value="aids">CSE AIDS</option>
-                            <option value="csf">CSE CSF</option>
-                            <option value="csbs">CSE CSBS</option>
+                        <label for="state" class="form-label">State</label>
+                        <select class="form-select" id="state" name="state" aria-describedby="dropdownHelp5" required>
+                            <option value="" disabled selected>State</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="MP">Madhya Pradesh</option>
                         </select>
-                        <div id="dropdownHelp5" class="dropdown-help">Select Subject.</div>
+                        <div id="dropdownHelp5" class="dropdown-help">State</div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleInputDropdown4" class="form-label">Subject</label>
-                        <select class="form-select" id="exampleInputDropdown4" aria-describedby="dropdownHelp4" required>
-                            <option value="" disabled selected>Subject</option>
-                            <option value="fsd">FSD</option>
-                            <option value="smcl">SMCL</option>
-                            <option value="aimlt">AIMLT</option>
-                            <option value="dfi">DFI</option>
-                            <option value="wmds">WMDS</option>
+                        <label for="city" class="form-label">City</label>
+                        <select class="form-select" id="city" name="city" aria-describedby="dropdownHelp4" required>
+                            <option value="" disabled selected>City</option>
                         </select>
-                        <div id="dropdownHelp4" class="dropdown-help">Select Branch.</div>
+                        <div id="dropdownHelp4" class="dropdown-help">Select City.</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm</label>
-                        <input type="password" class="form-control" placeholder="Please enter CONFIRM " id="exampleInputPassword1" required>
+                        <input type="password" class="form-control" placeholder="Please enter CONFIRM" id="confirm" required>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <input type="checkbox" class="form-check-input" id="Check">
                         <label class="form-check-label" for="exampleCheck1">I agree to the <a href="privacy.html">privacy policy</a></label>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -91,5 +67,23 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLabel">Alert</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Please tick the checkbox to agree to the privacy policy.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>

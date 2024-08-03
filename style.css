@@ -18,3 +18,8 @@
     font-size: 0.875rem; /* Smaller font size */
     color: #6c757d; /* Subtle text color */
 }
+
+.error {
+    border-color: red;
+    box-shadow: 0 0 5px red;
+}
