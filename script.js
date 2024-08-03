@@ -28,48 +28,41 @@ $(document).ready(function() {
             citySelect.append($("<option>").text("Select State first"));
         }
     });
-});
 
-$(document).ready(function(){
     $("#phone").on("input", function(){
         const mob = $(this).val();
         const phonePattern = /^[0-9]{10}$/;
         if(mob == ""){
             $(this).removeClass("error")
-        }else{
+        } else {
             if(!phonePattern.test(mob)){
                 $(this).addClass("error");
-            }else{
+            } else {
                 $(this).removeClass("error");
             }
         }
-        
     });
-});
 
-$(document).ready(function(){
     $('#confirm').on("input", function(){
         const confirmed = $(this).val();
         if(confirmed != "CONFIRM"){
             $(this).addClass("error");
-        }else{
+        } else {
             $(this).removeClass("error");
+        }
+    });
+
+    $('#myform').submit(function(event){
+        const tick = $('#Check').is(':checked');
+        if(!tick){
+            event.preventDefault();
+            $('#alertModal').modal('show');
+        } else {
+            alert("Form Submitted Successfully");
         }
     });
 });
 
-$(document).ready(function(){
-    $('#myform').submit(function(event){
-        const tick = $('#Check').is(':checked');
-        if(!tick){
-            alert("Please tick the captcha");
-            event.preventDefault();
-            $('#alertModal').modal('show');
-        }else{
-            alert("Form Submitted Succesfuly");
-        }
-    });
-});
 
 // Function for form validation
 /*
