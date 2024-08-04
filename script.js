@@ -10,8 +10,17 @@ const citiesByState = {
     "Gujarat": [
         "Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar",
         "Jamnagar", "Junagadh", "Gandhinagar", "Anand", "Bharuch"
+    ],
+    "Madhya Pradesh": [
+        "Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain",
+        "Sagar", "Dewas", "Satna", "Ratlam", "Rewa"
+    ],
+    "Tamil Nadu": [
+        "Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem",
+        "Tiruppur", "Erode", "Vellore", "Thoothukudi", "Nagercoil"
     ]
 };
+
 
 // Function to update city options based on the selected state
 $(document).ready(function() {
@@ -21,6 +30,7 @@ $(document).ready(function() {
         citySelect.empty();
         if (selectedState in citiesByState) {
             const cities = citiesByState[selectedState];
+            citySelect.append($("<option disabled selected>").text("City"));
             $.each(cities, function(index, city) {
                 citySelect.append($("<option>").text(city));
             });
@@ -66,13 +76,26 @@ $(document).ready(function() {
         }
     });
 
+
     $('#myform').submit(function(event){
         const tick = $('#Check').is(':checked');
+        const mob_check = $('#phone').val();
+        const phonePatterned = /^[0-9]{10}$/;
+        const confirmation = $('#confirm').val();
         if(!tick){
             event.preventDefault();
             $('#alertModal').modal('show');
-        } else {
-            alert("Form Submitted Successfully");
+
+        }
+        else if(!phonePatterned.test(mob_check)){
+            event.preventDefault();
+            $('#phonealert').modal('show');
+
+        }
+        else if(confirmation != "CONFIRM"){
+            event.preventDefault();
+            $('#confirmalert').modal('show');
+
         }
     });
 });
