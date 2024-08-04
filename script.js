@@ -33,11 +33,25 @@ $(document).ready(function() {
         const mob = $(this).val();
         const phonePattern = /^[0-9]{10}$/;
         if(mob == ""){
-            $(this).removeClass("error")
+            $(this).removeClass("error");
         } else {
             if(!phonePattern.test(mob)){
                 $(this).addClass("error");
             } else {
+                $(this).removeClass("error");
+            }
+        }
+    });
+
+    $("#email").on("input", function(){
+        const mail = $(this).val();
+        const mailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if(mail == ""){
+            $(this).removeClass("error");
+        }else{
+            if(!mailpattern.test(mail)){
+                $(this).addClass("error");
+            }else{
                 $(this).removeClass("error");
             }
         }
@@ -63,25 +77,3 @@ $(document).ready(function() {
     });
 });
 
-
-// Function for form validation
-/*
-$("#myForm").submit(function(event) {
-    event.preventDefault();
-    const name = $("#name").val();
-    const phone = $("#phone").val();
-    const email = $("#email").val();
-    const state = $("#state").val();
-    const city = $("#city").val();
-    const country = $("#country").val();
-    const pincode = $("#pincode").val();
-
-
-    if (name === "" || phone === "" || email === "" || state === "" || city === "" || country === "" || pincode === "") {
-        alert("Please fill in all fields.");
-    } else {
-
-        alert("Form submitted successfully!");
-    }
-});
-*/
