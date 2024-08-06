@@ -39,19 +39,25 @@ $(document).ready(function() {
         }
     });
 
-    $("#phone").on("input", function(){
-        const mob = $(this).val();
-        const phonePattern = /^[0-9]{10}$/;
-        if(mob == ""){
-            $(this).removeClass("error");
-        } else {
-            if(!phonePattern.test(mob)){
-                $(this).addClass("error");
-            } else {
-                $(this).removeClass("error");
-            }
-        }
-    });
+   $("#phone").on("input", function() {
+                // Filter input to allow only numeric characters
+                let inputField = $(this);
+                let filteredValue = inputField.val().replace(/[^0-9]/g, '');
+                inputField.val(filteredValue);
+                
+                // Validate the phone number
+                const mob = inputField.val();
+                const phonePattern = /^[0-9]{10}$/;
+                if (mob === "") {
+                    inputField.removeClass("error");
+                } else {
+                    if (!phonePattern.test(mob)) {
+                        inputField.addClass("error");
+                    } else {
+                        inputField.removeClass("error");
+                    }
+                }
+            });
 
     $("#email").on("input", function(){
         const mail = $(this).val();
@@ -76,7 +82,8 @@ $(document).ready(function() {
         }
     });
 
-
+     
+    
     $('#myform').submit(function(event){
         const tick = $('#Check').is(':checked');
         const mob_check = $('#phone').val();
