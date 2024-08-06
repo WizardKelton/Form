@@ -27,7 +27,7 @@ $(document).ready(function() {
     $("#state").change(function() {
         const selectedState = $(this).val();
         const citySelect = $("#city");
-        citySelect.empty();
+        //citySelect.empty();
         if (selectedState in citiesByState) {
             const cities = citiesByState[selectedState];
             citySelect.append($("<option disabled selected>").text("City"));
